@@ -8,5 +8,5 @@ Python-Flask apps can be run within any IDE, (VS Code) for me, at the cmd line. 
 
 Those dependancies were wrapped into a Dockerfile FROM an Ubuntu image.
 
-Helpful tools to set the foundation for using Docker and integrated this technology into your workflow/deployment stack
+Helpful concepts to set the foundation for using Docker, creating images, using the command line to execute tasks and integration into  workflow/deployment stack
   - cheat-sheet.txt
