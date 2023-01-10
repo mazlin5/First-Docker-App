@@ -1,0 +1,65 @@
+docker commands:
+
+* install:
+#start vm for docker
+	docker-machine start 
+#get env vars
+	docker-machine env
+#ref variables 
+	docker run - e ENV-VAR="value"
+
+	python code:
+	var-name = os.environ.get('ENV-VAR')
+
+#set them 
+	eval "$(docker-machine env default)" 
+
+run - start a container 
+	run ubuntu - runs instance of ubuntu image 
+	-d = run in the background
+	
+	PORT MAPPING:
+	 docker run -p 80:5000 container-name
+	
+	HOW DATA IS PERSISTED IN DOCKER CONTAINER
+	 - MAP dir outside the container on docker host -> to dir inside container
+	    docker run -v /opt/datadir:/var/lib/mysql mysql
+
+inspect - gets metadata, state, mounts, config, ect
+	docker inspect --f= '{{json .header-name}}' container-id
+
+logs - view logs of stdout of container  
+  
+ps - lists RUNNING containers metadata
+
+	- a : all containers 
+stop  - stop the container 
+
+rm - remove container (permanent)
+	rmi - removes images
+	 -f = force
+	  docker rmi -f $(docker images -aq)
+images - list available images
+	- rmi - removes 
+
+pull- download an image 
+
+1. How to run cmd on running container 
+ - docker ps -a _ see running container 
+   - view files of container 
+	docker exec container-name cat /etc/hosts
+
+2. run docker image for simple web application
+ - hosting application on container
+
+Problem: run a container named x using image y and set env to z and map to port a:b host:
+
+Solution: docker run - a:b --name container-name -e ENV=z -d image-name
+
+ENTRYPOINT - CMD Instruction - what you want to run on cold start
+	ENTRYPOINT["sleep"]
+	CMD["5"
+
+flask-docker code
+--------------
+ENTRYPOINT FLASK_APP=/opt/app.py flask run 

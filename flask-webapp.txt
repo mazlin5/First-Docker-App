@@ -1,0 +1,28 @@
+# Flask - Python Web application setup 
+
+# install dependency on docker
+docker run -it ubuntu bash  
+
+#install python 
+#update package index
+
+apt-get update
+apt-get install -y python
+
+#setup web server - Flask 
+#install flask via pip
+apt-get install python3-pip
+	pip install flask 
+
+#start web server
+FLASK_APP=app.py flask run --host=0.0.0.0
+
+#create Dockerfile 
+dependency steps above 
+
+#build the image
+docker build .
+	assing name to image: -t (tag)
+*NOTE* when docker builds an image its CACHED so re-build is quick 
+
+ 
